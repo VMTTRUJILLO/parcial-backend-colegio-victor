@@ -120,6 +120,8 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'$2a$10$h9RI5egAHk/m3g78NbMM2eVfAHpjPuEfLZhGt6zrkSRkIntu7t8aO','rector'),(2,'$2a$10$lbeeSj6GkSDJrRTAtk.irOdu10T1Sx.m6funZMGcEeMooMEvXveDm','estudiante1'),(3,'$2a$10$//WwZZN/QsX0TnfGY2gWBudUTvw8I/NUCbfDPzWKRhz.fuF8y/XX.','estudiante2'),(4,'$2a$10$9i2yTdYEMsRbAqLFkQg.puMdFa7aOI16EkmtCyz8e4u3lGSUd./7.','estudiante3'),(5,'$2a$10$9fOgC8FfQTeSYAzDWbOw5O857FOLT7aGFwkqHg4dYQN4xgAz00hlO','docente1'),(6,'$2a$10$qJwlovmmb6xiq0qISkQ5r.zi9PqmdDxy7QP9/BkuRLLtDAMrJ3H72','docente2'),(7,'$2a$10$eKzvr475C.ablTAcKR0EwukB1czyDHuj.A5JFLzEcWh0g2NTir2OO','docente3');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+/*PARA PODER INGRESAR Y COMO LAS CONTRSEÑAS ESTAN ENCRIPTADAS TODOS LOS USUARIOS NO IMPORTA SU ROL TIENEN LA
+MISMA PASSWORD : 1234*/
 UNLOCK TABLES;
 
 --

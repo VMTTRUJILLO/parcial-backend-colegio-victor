@@ -12,9 +12,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+// Importaciones Swagger
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @Controller
 @RequestMapping("/")
+@Tag(name = "Docente", description = "Controlador para la gestión de asignaturas y horarios de los docentes")
 public class TeacherController {
 
     @Autowired
@@ -32,6 +38,15 @@ public class TeacherController {
         return teacherRepository.findByUsuarioUsername(username)
                 .orElseThrow(() -> new RuntimeException("Docente no encontrado"));
     }
+    @Operation(
+            summary = "Ver asignaturas del docente",
+            description = "Obtiene la lista de asignaturas asociadas al docente actualmente autenticado."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Lista de asignaturas mostrada correctamente"),
+            @ApiResponse(responseCode = "401", description = "El docente no está autenticado"),
+            @ApiResponse(responseCode = "404", description = "Docente no encontrado en el sistema")
+    })
     @GetMapping("/asignaturas_docente")
     public String verAsignaturasDocente(Model model, Authentication authentication) {
         // Asegúrate de tener este método para obtener al docente actual
@@ -45,6 +60,14 @@ public class TeacherController {
 
         return "asignaturas_docente"; // este debe ser el nombre del HTML
     }
+    @Operation(
+            summary = "Editar horario de asignatura",
+            description = "Permite al docente acceder a la vista para modificar el horario de una asignatura específica."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Vista de edición cargada correctamente"),
+            @ApiResponse(responseCode = "404", description = "Asignatura no encontrada")
+    })
 
 
     @GetMapping("/edit_horario/{id}")
@@ -54,6 +77,14 @@ public class TeacherController {
         model.addAttribute("signature", signature);
         return "edit_horario"; // Nombre correcto del HTML
     }
+    @Operation(
+            summary = "Actualizar horario de asignatura",
+            description = "Guarda los nuevos valores de hora de inicio y hora de fin de una asignatura del docente."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "302", description = "Horario actualizado y redirigido a la lista de asignaturas"),
+            @ApiResponse(responseCode = "404", description = "Asignatura no encontrada")
+    })
 
     @PostMapping("/edit_horario/{id}")
     public String actualizarHorario(@PathVariable Long id, @ModelAttribute SignatureEntity signatureActualizada) {
