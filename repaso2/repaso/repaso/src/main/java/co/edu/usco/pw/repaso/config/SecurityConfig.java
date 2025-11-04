@@ -38,6 +38,17 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/webjars/**",
+                                "/images/**",
+                                "/css/**",
+                                "/js/**",
+                                "/login",
+                                "/"
+                        ).permitAll()
                         .requestMatchers("/inicio/**", "/login", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/user/**").hasRole("ESTUDIANTE")
                         .requestMatchers("/admin/**", "/registro/**", "/view/**").hasRole("RECTOR")
@@ -58,14 +69,7 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 )
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html"
-                        ).permitAll()
-                        .anyRequest().authenticated()
-                )
+
             .exceptionHandling(ex -> ex.accessDeniedPage("/403"));
 
         return http.build();
