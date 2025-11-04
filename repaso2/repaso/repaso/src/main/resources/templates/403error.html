@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <title>Error</title>
+</head>
+<body>
+    
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/home">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/home">Admin </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/creator/home">Creator </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/edit/home">Edit </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/delete/home">Delete </a>
+              </li>
+              <li class="nav-item">
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" class="nav-link btn btn-link" style="padding: 0; border: none;">Cerrar Sesión</button>
+                </form>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+
+    <div class="d-flex justify-content-center align-items-center " style="padding-top: 20px; text-align: center;">
+        <div class="card p-4" style="width: 500px;">
+            <main>
+                <div class="mb-4">
+                    <h1>¡Hola!</h1>
+                    <p>Lo sentimos, pero no tienes los permisos necesarios para acceder a este apartado, sigue disfrutando nuestro contenido exclusivo para ti :D</p>
+                </div>
+    
+                <div>
+                    <div class="d-flex flex-column gap-2 mt-2">
+                        <button type="button" class="btn btn-success">Volver al inicio</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+</body>
+</html>

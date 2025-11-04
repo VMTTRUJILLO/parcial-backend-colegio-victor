@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <title>Lista de Asignaturas</title>
+</head>
+<body>
+<div class="container mt-4">
+  <div class="d-flex justify-content-end mb-3">
+    <button type="button" class="btn btn-danger" onclick="window.location.href='/login'">Cerrar Sesión</button>
+  </div>
+  <h2>Lista de Asignaturas</h2>
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Salón</th>
+      <th>Horario</th>
+      <th>Docente</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="asignatura : ${asignaturas}">
+      <td th:text="${asignatura.nombre}"></td>
+      <td th:text="${asignatura.descripcion}"></td>
+      <td th:text="${asignatura.salon}"></td>
+      <td>
+        <span th:text="${asignatura.horaInicio}"></span> -
+        <span th:text="${asignatura.horaFin}"></span>
+      </td>
+      <td th:text="${asignatura.docente.nombre}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
